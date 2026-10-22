@@ -314,6 +314,7 @@ footer a { text-decoration: none; } footer a:hover { color: var(--gold-hi); }
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-CK97HWEL1N');
+  gtag('config', 'AW-18530463256');
 </script>
 </head>
 <body>
@@ -719,7 +720,14 @@ var SITE = {
       var go = function () { var el = document.getElementById(m[1]); if (el) el.scrollIntoView(); };
       if (document.readyState === 'complete') { setTimeout(go, 300); } else { window.addEventListener('load', function () { setTimeout(go, 300); }); }
     }
-    var send = function (name) { if (typeof gtag === 'function') { gtag('event', name); } };
+    var DIR = 'AW-18530463256/bwNeCJCT6KUdEJjcgYRF';   // Google Ads conversion: Get directions
+    var CON = 'AW-18530463256/pYEtCJOT6KUdEJjcgYRF';   // Google Ads conversion: Contact
+    var send = function (name) {
+      if (typeof gtag !== 'function') return;
+      gtag('event', name);
+      if (name === 'directions_click') { gtag('event', 'conversion', { 'send_to': DIR }); }
+      else if (name === 'phone_click' || name === 'whatsapp_click' || name === 'email_click') { gtag('event', 'conversion', { 'send_to': CON }); }
+    };
     document.addEventListener('click', function (e) {
       var a = e.target && e.target.closest ? e.target.closest('a') : null;
       if (!a) return;
