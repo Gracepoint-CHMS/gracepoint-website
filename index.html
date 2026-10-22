@@ -709,5 +709,28 @@ var SITE = {
   }
 })();
 </script>
+<script>
+/* Ads helpers: (1) ?s=section links land on that section, so Google Ads sitelinks can each use their own URL.
+   (2) Send simple events to Google Analytics so Google Ads can count calls, WhatsApp, directions and prayer requests. */
+(function () {
+  try {
+    var m = /[?&]s=([a-z]+)/.exec(location.search);
+    if (m) {
+      var go = function () { var el = document.getElementById(m[1]); if (el) el.scrollIntoView(); };
+      if (document.readyState === 'complete') { setTimeout(go, 300); } else { window.addEventListener('load', function () { setTimeout(go, 300); }); }
+    }
+    var send = function (name) { if (typeof gtag === 'function') { gtag('event', name); } };
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a') : null;
+      if (!a) return;
+      var h = a.getAttribute('href') || '';
+      if (h.indexOf('tel:') === 0) send('phone_click');
+      else if (h.indexOf('wa.me') > -1 || h.indexOf('whatsapp') > -1) send('whatsapp_click');
+      else if (h.indexOf('google.com/maps') > -1 || h.indexOf('maps.google') > -1 || a.id === 'mapLink') send('directions_click');
+      else if (h.indexOf('mailto:') === 0) send('email_click');
+    }, true);
+  } catch (err) {}
+})();
+</script>
 </body>
 </html>
