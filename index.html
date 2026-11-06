@@ -520,8 +520,13 @@ footer a { text-decoration: none; } footer a:hover { color: var(--gold-hi); }
             <div class="total"><small>Total to give</small><output id="total">GH₵ 0.00</output></div>
           </div>
         </form>
+        <div class="calc" style="margin-bottom:1.25rem;text-align:center">
+          <h3>Give online</h3>
+          <p>Pay securely with MTN MoMo, Telecel Cash, AirtelTigo Money or a Visa/Mastercard card through Paystack. Everyone is welcome to give, and you get a receipt straight away. No account needed.</p>
+          <a class="btn gold" id="giveOnline" href="#" target="_blank" rel="noopener noreferrer">Give online now</a>
+        </div>
         <div class="ways" id="ways">
-          <h4>Give by mobile money or bank</h4>
+          <h4>Or give by mobile money or bank transfer</h4>
           <div class="ways-grid" id="waysList"></div>
         </div>
         <p style="margin-top:1.1rem;color:var(--muted);font-size:0.92rem">Members can also record and follow their giving in the <a class="portal-link" href="#" style="color:var(--gold-hi)">member portal</a>.</p>
@@ -543,7 +548,7 @@ footer a { text-decoration: none; } footer a:hover { color: var(--gold-hi); }
         <details><summary>When are the services?</summary><p>Prophetic Morning Service on Sundays, 8:00 AM to 1:00 PM, and Evening Services on Tuesdays and Thursdays, 7:00 PM to 9:00 PM.</p></details>
         <details><summary>Am I expected to give?</summary><p>No. Giving is a free response of love, never guilt or pressure. “Each one must give as he has decided in his heart.” 2 Corinthians 9:7</p></details>
         <details><summary>How can I request prayer?</summary><p>Use the prayer request form in the Visit us section, or message us on WhatsApp. Our prayer team will stand with you.</p></details>
-        <details><summary>How do I give or follow my giving?</summary><p>Use the mobile money and bank details in the Giving section. Members can also record and follow their giving in the member portal.</p></details>
+        <details><summary>How do I give or follow my giving?</summary><p>Tap Give online in the Giving section to pay by mobile money or card, or use the mobile money and bank details shown there. Members can also record and follow their giving in the member portal.</p></details>
         <details><summary>How do I become part of the church family?</summary><p>Visit us on any service day and speak with a leader, or send us a message on WhatsApp. We will help you find your place.</p></details>
       </div>
     </div>
@@ -627,6 +632,7 @@ var SITE = {
 
   if (SITE.announcement) { $('noticeText').textContent = SITE.announcement; $('notice').hidden = false; $('notice').querySelector('.wrap').style.textAlign = 'center'; }
   Array.prototype.forEach.call(document.querySelectorAll('.portal-link'), function (a) { a.href = SITE.portalUrl; a.target = '_blank'; a.rel = 'noopener noreferrer'; });
+  $('giveOnline').href = String(SITE.portalUrl).replace(/\/$/, '') + '/?give=1';
   $('year').textContent = new Date().getFullYear();
   $('mapLink').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(SITE.mapQuery);
 
