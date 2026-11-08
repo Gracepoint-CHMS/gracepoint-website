@@ -312,6 +312,7 @@ footer a { text-decoration: none; } footer a:hover { color: var(--gold-hi); }
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CK97HWEL1N"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18530463256"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -764,6 +765,7 @@ var SITE = {
       else if (h.indexOf('wa.me') > -1 || h.indexOf('whatsapp') > -1) send('whatsapp_click');
       else if (h.indexOf('google.com/maps') > -1 || h.indexOf('maps.google') > -1 || a.id === 'mapLink') send('directions_click');
       else if (h.indexOf('mailto:') === 0) send('email_click');
+      else if (a.id === 'giveOnline') send('give_click');
     }, true);
   } catch (err) {}
 })();
